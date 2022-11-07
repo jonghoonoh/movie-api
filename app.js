@@ -8,23 +8,23 @@ app.use(express.json());
 app.get('/reviews', (req, res) => {
   const count = Number(req.query.count);
   if (count >= 0 && count < reviews.length) {
-    res.json(reviews.slice(0, count));
+    res.send(reviews.slice(0, count));
   } else {
-    res.json(reviews);
+    res.send(reviews);
   }
 });
 
 app.post('/reviews', (req, res) => {
   const newReview = req.body;
   reviews.push(newReview);
-  res.json(newReview);
+  res.send(newReview);
 });
 
 app.get('/reviews/:id', (req, res) => {
   const { id } = req.params;
   const review = reviews.find(r => r.id === Number(id));
   if (review) {
-    res.json(review);
+    res.send(review);
   } else {
     res.status(404).send({ message: 'Review not found' });
   }
