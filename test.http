@@ -6,7 +6,7 @@ GET http://localhost:3000/reviews?count=2
 
 ###
 
-GET http://localhost:3000/reviews/5
+GET http://localhost:3000/reviews/636b63d10bcd8d4cf334a180
 
 ###
 
@@ -14,15 +14,14 @@ POST http://localhost:3000/reviews
 Content-Type: application/json
 
 {
-  "id": 45,
   "title": "테스트 영화",
-  "rating": 3,
+  "rating": 5,
   "content": "재밌었어요"
 }
 
 ###
 
-PUT http://localhost:3000/reviews/1
+PUT http://localhost:3000/reviews/636b641fcb9a6c22d33c3515
 Content-Type: application/json
 
 {
@@ -33,4 +32,4 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/reviews/23
+DELETE http://localhost:3000/reviews/636b6429cb9a6c22d33c3519
