@@ -32,4 +32,12 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/reviews/636c734bb999f5655525c2fe
+DELETE http://localhost:3000/reviews/636cc0ed3a3646cd37e2b15c
+
+###
+
+GET http://localhost:3000/movies
+
+###
+
+POST http://localhost:3000/actors
