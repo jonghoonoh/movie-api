@@ -16,18 +16,18 @@ Content-Type: application/json
 {
   "title": "테스트 영화",
   "rating": 5,
-  "content": "재밌었어요"
+  "content": "테스트 테스트 테스트 테스트 테스트 테스트"
 }
 
 ###
 
-PUT http://localhost:3000/reviews/636b641fcb9a6c22d33c3515
+PUT http://localhost:3000/reviews/636c6ff023e96640fc41056e
 Content-Type: application/json
 
 {
   "title": "새로운 영화",
   "rating": 5,
-  "content": "재밌었다"
+  "content": "재밌었다 재밌었다 재밌었다 재밌었다 재밌었다 재밌었다"
 }
 
 ###

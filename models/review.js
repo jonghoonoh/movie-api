@@ -17,10 +17,10 @@ const ReviewSchema = new mongoose.Schema({
     required: true,
     validate: {
       validator: function(v) {
-        const words = v.split(); 
-        return words.length > 10;
+        const words = v.split(' '); 
+        return words.length > 5;
       },
-      message: () => 'Must exceed 10 words',
+      message: () => 'Must exceed 5 words',
     }
   },
 }, { 
