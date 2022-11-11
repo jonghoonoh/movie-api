@@ -1,5 +1,7 @@
+require('dotenv').config();
+
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/reviews');
+mongoose.connect(process.env.DATABASE_URL);
 
 const Review = require('./models/review');
 

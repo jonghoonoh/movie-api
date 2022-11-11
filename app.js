@@ -1,11 +1,12 @@
 const express = require('express');
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const app = express();
 
 app.use(express.json());
 
-mongoose.connect('mongodb://localhost/reviews');
+mongoose.connect(process.env.DATABASE_URL);
 
 const Review = require('./models/review');
 
@@ -77,4 +78,4 @@ app
     }
   });
 
-app.listen(3000, () => console.log('Server Started'));
+app.listen(process.env.PORT || 3000, () => console.log('Server Started'));
