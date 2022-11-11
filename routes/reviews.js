@@ -22,11 +22,14 @@ router
   .post(upload.single('image'), async (req, res) => {
     let body;
     if (req.file) {
-      body = Object.assign({},req.body);
+      body = Object.assign({}, req.body);
       body.imageUrl = req.file.path;
     } else {
       body = req.body;
     }
+    console.log(body);
+    console.log(req.file);
+    console.log(req.body);
     try {
       const newReview = await Review.create(body);
       res.send(newReview);
@@ -44,7 +47,7 @@ router
   .put(upload.single('image'), async (req, res) => {
     let body;
     if (req.file) {
-      body = Object.assign({},req.body);
+      body = Object.assign({}, req.body);
       body.imageUrl = req.file.path;
     } else {
       body = req.body;
