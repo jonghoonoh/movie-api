@@ -20,9 +20,9 @@ router
       res.status(500).send({ message: e.message });
     }
   })
-  .post(upload.single('image'), async (req, res) => {
+  .post(/* upload.single('image'), */ async (req, res) => {
     const body = req.body;
-    body.imageUrl = req.file.path;
+    // body.imageUrl = req.file.path;
     try {
       const newReview = await Review.create(body);
       res.send(newReview);

@@ -1,7 +1,9 @@
+require('dotenv').config();
+
 const express = require('express');
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/reviews');
+mongoose.connect(process.env.DATABASE_URL);
 
 const app = express();
 app.use(require('./middlewares/logger'));
