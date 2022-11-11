@@ -20,11 +20,13 @@ router
     }
   })
   .post(upload.single('image'), async (req, res) => {
-    const body = req.body;
-    body.imageUrl = req.file.path;
-    console.log(req.body);
-    console.log(req.file);
-
+    let body;
+    if (req.file) {
+      body = Object.assign({},req.body);
+      body.imageUrl = req.file.path;
+    } else {
+      body = req.body;
+    }
     try {
       const newReview = await Review.create(body);
       res.send(newReview);
@@ -40,11 +42,16 @@ router
     res.send(req.review);
   })
   .put(upload.single('image'), async (req, res) => {
-    const newInfo = req.body;
-    newInfo.imageUrl = req.file.path;
+    let body;
+    if (req.file) {
+      body = Object.assign({},req.body);
+      body.imageUrl = req.file.path;
+    } else {
+      body = req.body;
+    }
     const review = req.review;
-    Object.keys(newInfo).forEach((key) => {
-      review[key] = newInfo[key];
+    Object.keys(body).forEach((key) => {
+      review[key] = body[key];
     });
     try {
       await review.save();
