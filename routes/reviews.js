@@ -23,13 +23,10 @@ router
     let body;
     if (req.file) {
       body = Object.assign({}, req.body);
-      body.imageUrl = req.file.path;
+      body.imgUrl = req.file.path;
     } else {
       body = req.body;
     }
-    console.log(body);
-    console.log(req.file);
-    console.log(req.body);
     try {
       const newReview = await Review.create(body);
       res.send(newReview);
@@ -48,7 +45,7 @@ router
     let body;
     if (req.file) {
       body = Object.assign({}, req.body);
-      body.imageUrl = req.file.path;
+      body.imgUrl = req.file.path;
     } else {
       body = req.body;
     }
