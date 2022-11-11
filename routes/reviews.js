@@ -22,6 +22,9 @@ router
   .post(upload.single('image'), async (req, res) => {
     const body = req.body;
     body.imageUrl = req.file.path;
+    console.log(req.body);
+    console.log(req.file);
+
     try {
       const newReview = await Review.create(body);
       res.send(newReview);
