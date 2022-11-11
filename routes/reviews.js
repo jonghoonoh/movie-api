@@ -1,9 +1,10 @@
 const express = require('express');
+const upload = require('../middlewares/upload');
+const Review = require('../models/review');
 
 const router = express.Router();
 router.use(express.json());
 
-const Review = require('../models/review');
 
 router
   .route('/')
@@ -19,9 +20,11 @@ router
       res.status(500).send({ message: e.message });
     }
   })
-  .post(async (req, res) => {
+  .post(upload.single('image'), async (req, res) => {
+    const body = req.body;
+    body.imageUrl = req.file.path;
     try {
-      const newReview = await Review.create(req.body);
+      const newReview = await Review.create(body);
       res.send(newReview);
     } catch (e) {
       res.status(400).send({ message: e.message });

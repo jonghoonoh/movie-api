@@ -23,7 +23,10 @@ const ReviewSchema = new mongoose.Schema({
       message: () => 'Must exceed 5 words',
     }
   },
-}, { 
+  imgUrl: {
+    type: String,
+  },
+}, {
   timestamps: true
 });
 
