@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL);
 
 const app = express();
+app.use(express.static('media'));
 app.use(require('./middlewares/logger'));
 
 app.use('/reviews', require('./routes/reviews'));

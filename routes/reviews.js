@@ -1,10 +1,9 @@
 const express = require('express');
-// const upload = require('../middlewares/upload');
+const upload = require('../middlewares/upload');
 const Review = require('../models/review');
 
 const router = express.Router();
 router.use(express.json());
-
 
 router
   .route('/')
@@ -20,9 +19,9 @@ router
       res.status(500).send({ message: e.message });
     }
   })
-  .post(/* upload.single('image'), */ async (req, res) => {
+  .post(upload.single('image'), async (req, res) => {
     const body = req.body;
-    // body.imageUrl = req.file.path;
+    body.imageUrl = req.file.path;
     try {
       const newReview = await Review.create(body);
       res.send(newReview);
@@ -37,8 +36,9 @@ router
   .get(async (req, res) => {
     res.send(req.review);
   })
-  .put(async (req, res) => {
+  .put(upload.single('image'), async (req, res) => {
     const newInfo = req.body;
+    newInfo.imageUrl = req.file.path;
     const review = req.review;
     Object.keys(newInfo).forEach((key) => {
       review[key] = newInfo[key];
